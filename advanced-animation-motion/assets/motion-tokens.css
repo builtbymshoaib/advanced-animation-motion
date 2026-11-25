@@ -1,0 +1,13 @@
+/* Import once from the root layout after existing tokens; adapt names if needed. */
+:root { --am-fast: 150ms; --am-normal: 280ms; --am-editorial: 550ms; --am-ease: cubic-bezier(.22,1,.36,1); }
+.am-button { transition: transform var(--am-fast) var(--am-ease); }
+@media (hover:hover) and (pointer:fine) { .am-button:hover { transform: translateY(-2px); } }
+.am-button:active { transform: scale(.98); }
+.am-button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.am-accent { animation: am-enter var(--am-editorial) var(--am-ease) both; }
+@keyframes am-enter { from { opacity: .5; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.am-logo { pointer-events:none; animation: am-logo 600ms var(--am-ease) both; }
+@keyframes am-logo { from { transform: scale(.94); opacity:.5; } to { transform:none; opacity:1; } }
+.am-path { stroke-dasharray: 1; animation: am-draw 450ms var(--am-ease) both; }
+@keyframes am-draw { from { stroke-dashoffset:1; } to { stroke-dashoffset:0; } }
+@media (prefers-reduced-motion: reduce) { .am-button,.am-accent,.am-logo,.am-path { animation:none; transition:none; transform:none; stroke-dashoffset:0; } .am-button:hover,.am-button:active { transform:none; } }
